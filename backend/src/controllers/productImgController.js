@@ -15,6 +15,16 @@ const create = catchError(async(req, res) => {
     return res.status(201).json(result);
 });
 
+const update = catchError(async(req, res) => {
+    const { id } = req.params;
+    const result = await ProductImg.update(
+        req.body,
+        { where: {id}, returning: true }
+    );
+    if(result[0] === 0) return res.sendStatus(404);
+    return res.json(result[1][0]);
+});
+
 const remove = catchError(async(req, res) => {
     const { id } = req.params;
     const image = await ProductImg.findByPk(id);
@@ -27,5 +37,6 @@ const remove = catchError(async(req, res) => {
 module.exports = {
     getAll,
     create,
-    remove
+    remove,
+    update
 }

@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const errorHandler = require("./utils/errorHandler");
 const helmet = require("helmet");
+require('dotenv').config();
 const path = require("path");
 const router = require("./routes");
 
