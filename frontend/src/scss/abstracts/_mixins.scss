@@ -1,3 +1,9 @@
+@mixin flex($align-item, $justify-content) {
+    display: flex;
+    align-items: $align-item;
+    justify-content: $justify-content;
+}
+
 @mixin responsive($breakpoint) {
     @if $breakpoint == small {
       @media (max-width: 23.55em) {
